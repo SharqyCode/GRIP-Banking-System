@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static',
+                    filename='assets/css/home.css' ) }}">
+{% endblock %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block content %}
+<section class="d-flex justify-content-center align-items-center">
+    <h1 class="text-center">Made With Love ❤️</h1>
+</section>
+{% endblock %}

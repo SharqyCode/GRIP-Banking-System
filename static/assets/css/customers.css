@@ -1,0 +1,9 @@
+tr,
+.close-icon {
+    cursor: pointer;
+}
+
+.fa-user {
+    font-size: 64px;
+    margin-bottom: 10px;
+}

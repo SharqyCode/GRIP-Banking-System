@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+Transfers
+{% endblock %}
+
+{% block content %}
+<h2 class="text-center mt-3">Transfers</h2>
+<div class="container-fluid">
+    <table class="table table-hover mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Sender Id</th>
+                <th scope="col">Sender Email</th>
+                <th scope="col">Receiver Id</th>
+                <th scope="col">Receiver Email</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set counter = namespace(total=0) %}
+            {% for row in transfers %}
+            {% if counter.total % 2 == 0 %}
+            <tr class="table-active">
+                <td class="sender-id">{{ row[1] }}</td>
+                <td class="sender-name">{{ row[2] }}</td>
+                <td class="receiver-id">{{ row[3] }}</td>
+                <td class="receiver-email">${{ row[4] }}</td>
+                <td class="amount">${{ row[5] }}</td>
+                <td class="date">{{ row[6] }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td class="sender-id">{{ row[1] }}</td>
+                <td class="sender-name">{{ row[2] }}</td>
+                <td class="receiver-id">{{ row[3] }}</td>
+                <td class="receiver-email">${{ row[4] }}</td>
+                <td class="amount">${{ row[5] }}</td>
+                <td class="date">{{ row[6] }}</td>
+            </tr>
+            {% endif %}
+            {% set counter.total = counter.total + 1 %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static',
+                    filename='assets/css/main.css' ) }}">
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='node_modules/@fortawesome/fontawesome-free/css/all.min.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body class="relative">
+    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">MoneyGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarColor01">
+                <ul class="navbar-nav text-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/customers">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/transfers">Transfers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            updateNavbar();
+        });
+
+        function updateNavbar() {
+            var path = window.location.pathname;
+            var links = document.querySelectorAll('.nav-item a');
+            for (var i = 0; i < links.length; i++) {
+                links[i].classList.remove('active');
+                if (links[i].getAttribute('href') === path) {
+                    links[i].classList.add('active');
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
